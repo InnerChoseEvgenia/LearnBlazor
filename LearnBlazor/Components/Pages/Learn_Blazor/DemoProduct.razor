@@ -1,0 +1,108 @@
+﻿@page "/LearnBlazor/demoProduct"
+
+<h2 class="text-primary"> DemoProduct </h2>
+<p>Favorite Count : @FavoriteCount</p>
+<p>Selected Product : @SelectedProduct</p>
+<div class="p-2 mt-2">
+    <div class="row">
+        @foreach (var prod in ProductList)
+        {
+            <_IndividualProduct Product="prod" OnFavoriteUpdated="FavoriteCountChange"
+                OnSelectedProductChange="UpdateSelectedProduct">
+
+            </_IndividualProduct>
+           @*  <div class="bg-light border col-6">
+                <h4 class="text-secondary">Product - @prod.Id</h4>
+                Name - @prod.Name <br/>
+                Show Properties :
+                <input type="checkbox" @bind="prod.IsActive"/>
+                @if(prod.IsActive)
+                {
+                    @foreach(var prodProp in prod.ProductProperties)
+                    {
+                        <p>@prodProp.Key - @prodProp.Value</p>
+                    }
+                }
+                <br/>
+                <_DeleteButtonComponent ProductId="@prod.Id" >
+                    @* ProductName="@prod.Name" *@
+                @* </_DeleteButtonComponent> *@
+                @* <input type="button" class="btn btn-danger" style="width:100px" value="Delete" 
+                       @onclick="()=>RemoveProduct(prod.Id)" /> *@
+            @* </div> *@ 
+        }
+    </div>
+    <div class="row pt-4">
+        
+        <input type="button" class="btn btn-success" style="width:100px" value="Counter"
+               @onclick="()=>IncrementCount(5)" />
+        Count : @Count<br />
+    </div>
+</div>
+
+@code {
+    public int Count { get; set; } = 0;
+    public int FavoriteCount { get; set; } = 0;
+    public string SelectedProduct { get; set; } = string.Empty;
+
+    List<Product> ProductList = new();
+    protected override void OnInitialized()
+    {
+        ProductList.Add(new()
+            {
+                Id = 1,
+                Name = "Midnight Blaze",
+                IsActive = false,
+                Price = 5.99,
+                ProductProperties = new List<Product_Prop>()
+            {
+            new Product_Prop{Id=1,Key="Color", Value="Red"},
+            new Product_Prop{Id=2,Key="Size", Value="20oz"},
+            new Product_Prop{Id=3,Key="Flavor", Value="Rose"},
+            }
+            });
+        ProductList.Add(new()
+            {
+                Id = 2,
+                Name = "Blossom Lily",
+                IsActive = true,
+                Price = 10.59,
+                ProductProperties = new List<Product_Prop>()
+            {
+            new Product_Prop{Id=1,Key="Color", Value="Red"},
+            new Product_Prop{Id=2,Key="Size", Value="20oz"},
+            new Product_Prop{Id=3,Key="Flavor", Value="Rose"},
+            }
+            });
+    }
+
+    private void IncrementCount(int counter)
+    {
+        Count+=counter;
+    }
+    // private void RemoveProduct(int productId)
+    // {
+    //     var prod = ProductList.FirstOrDefault(u => u.Id == productId);
+    //     if (prod != null)
+    //     {
+    //         ProductList.Remove(prod);
+    //     }
+    // }
+    protected void FavoriteCountChange (bool isSelected)
+    {
+        if (isSelected)
+        {
+            FavoriteCount++;
+        }
+        else
+        {
+            FavoriteCount--;
+        }
+    }
+
+    protected void UpdateSelectedProduct(string productName)
+    {
+        SelectedProduct = productName;
+    }
+}
+
