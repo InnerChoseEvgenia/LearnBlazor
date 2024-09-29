@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWFybl9CbGF6b3JcQmxhem9yanMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Женя/Blazor/LearnBlazor/Components/Pages/Learn_Blazor/Components/FormsBlazor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWFybl9CbGF6b3JcQ29tcG9uZW50c1xGb3Jtc0JsYXpvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Женя/Blazor/LearnBlazor/Components/Pages/Learn_Blazor/Components/_ChildComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMZWFybl9CbGF6b3JcQ29tcG9uZW50c1xfQ2hpbGRDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
